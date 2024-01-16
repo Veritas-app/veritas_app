@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:veritas/pages/signupdetails.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
 import 'package:veritas/pages/client/clientfeature.dart';
@@ -15,7 +16,8 @@ void main() => runApp(MaterialApp(
       "/first": (context) => firstpg(),
       "/clientfeature": (context) => clfeat(),
       "/login": (context) => login(),
-      "/cldashboard": (context) => cldashboard()
+      "/cldashboard": (context) => cldashboard(),
+      "/signupdetails": (context) => signInDetails()
   },
 ));
 
