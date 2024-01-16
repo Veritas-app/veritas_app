@@ -7,6 +7,21 @@ class clfeat extends StatefulWidget {
 }
 
 class _clfeatState extends State<clfeat> {
+  int counter = 1;
+
+  Map feattext = {
+    1: "EASILY REACH ADVOCATES...",
+    2: "CLEAR YOUR DOUBTS RELATED TO YOUR CASE...",
+    3: "PRIVACY REGARDING THE CASE",
+    4: "GET TOP LAWYERS NEAR YOUR AREA",
+  };
+  Map featimg = {
+    1: "assets/images/Business deal.svg",
+    2: "assets/images/Chat bot-pana 1.svg",
+    3: "",
+    4: "",
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,19 +44,19 @@ class _clfeatState extends State<clfeat> {
                   ),
                 ),
                 SvgPicture.asset(
-                  "assets/images/Business deal.svg",
+                  featimg[counter],
                   height: 400, width: 400,
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.center,
                 ),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.only(top: 20),
 
-                  child: Text("EASILY REACH ADVOCATES...",
+                  child: Text(feattext[counter],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: "Inter",
-                      fontSize: 40.0,
+                      fontSize: 30.0,
                       color: Colors.black,
                       fontWeight: FontWeight.w700, // NOTE THE FONT WEIGHT OF
                       // ######## THIS TEXT IT DOESNT LOOK GOOD
@@ -51,7 +66,11 @@ class _clfeatState extends State<clfeat> {
                 Container(
                   padding: EdgeInsets.only(top:60),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        counter++;
+                      });;
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(Colors.black),
                     ),
@@ -74,3 +93,14 @@ class _clfeatState extends State<clfeat> {
   }
 }
 
+// class featurepage {
+//
+//   String text;
+//   Svg img;
+//
+//   featurepage(String text, Svg img){
+//     this.text = text;
+//     this.img = img;
+//   }
+//
+// }
