@@ -16,7 +16,7 @@ class firstpg extends StatelessWidget {
             children: <Widget>[
               Container(
                 alignment: Alignment.centerLeft,
-                padding: EdgeInsets.all(10), // Change the padding if required
+                padding: EdgeInsets.all(10),
                 child: Text("VERITAS",
                     style: TextStyle(
                       fontFamily: "Jockey One",
