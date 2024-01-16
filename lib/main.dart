@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
-import 'package:veritas/pages/clientfeature.dart';
+import 'package:veritas/pages/client/clientfeature.dart';
 import 'package:veritas/pages/loginpage.dart';
+import 'package:veritas/pages/client/clientdashboard.dart';
 
 void main() => runApp(MaterialApp(
     // home: Splash(),
@@ -13,7 +14,8 @@ void main() => runApp(MaterialApp(
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
       "/clientfeature": (context) => clfeat(),
-      "/login": (context) => login()
+      "/login": (context) => login(),
+      "/cldashboard": (context) => cldashboard()
   },
 ));
 
