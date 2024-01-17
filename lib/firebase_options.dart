@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAO8cGuHEPMYFLafZzNMhCiEQUvgyhuM4s',
+    apiKey: 'AIzaSyAQd4u3qZ59NqN_HLE41D_tIhGXMHpDeAQ',
     appId: '1:258861114730:android:7f109fcea8ef4deae87113',
     messagingSenderId: '258861114730',
     projectId: 'veritas-app-law',
@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAlxmpdAsWnqoxoG-lGJMgKiKNvWz4Ypio',
+    apiKey: 'AIzaSyAQd4u3qZ59NqN_HLE41D_tIhGXMHpDeAQ',
     appId: '1:258861114730:ios:58bf6782e7f2072fe87113',
     messagingSenderId: '258861114730',
     projectId: 'veritas-app-law',

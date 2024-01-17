@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:veritas/pages/functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class login extends StatefulWidget {
 
@@ -7,12 +10,14 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
-  bool passwordVisible=false;
+  bool _passwordVisible=false;
+  final _usernamecont = TextEditingController();
+  final _userpasscont = TextEditingController();
 
   @override
   void initstate(){
     this.initState();
-    passwordVisible=true;
+    _passwordVisible=true;
   }
 
   @override
@@ -25,19 +30,9 @@ class _loginState extends State<login> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
+              Func.veritastext(),
               Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.all(10),
-                child: Text("VERITAS",
-                  style: TextStyle(
-                    fontFamily: "Jockey One",
-                    fontSize: 32.0,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10, top: 50),
+                padding: EdgeInsets.only(left: 20, top: 50),
                 alignment: Alignment.centerLeft,
                 child: Text("Login to continue",
                   style: TextStyle(
@@ -58,11 +53,7 @@ class _loginState extends State<login> {
                 ),
                 child: TextField(
                   textInputAction: TextInputAction.next,
-                  // style: TextStyle(
-                  //   fontSize: 17,
-                  //   color: Colors.black,
-                  // ),
-                  // onSubmitted: () {},
+                  controller: _usernamecont,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     prefixIcon: Icon(Icons.account_box_outlined),
@@ -80,11 +71,12 @@ class _loginState extends State<login> {
                   borderRadius: BorderRadius.all(new Radius.circular(25.7)),
                 ),
                 child: TextField(
+                  controller: _userpasscont,
                   style: TextStyle(
                     fontSize: 17,
                     color: Colors.black
                   ),
-                  obscureText: !passwordVisible,
+                  obscureText: !_passwordVisible,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
@@ -94,13 +86,13 @@ class _loginState extends State<login> {
                       Icons.abc,
                     ),
                     suffixIcon: IconButton(
-                      icon: Icon(passwordVisible
+                      icon: Icon(_passwordVisible
                           ? Icons.visibility_off
                           : Icons.visibility),
                       onPressed: () {
                         setState(
                               () {
-                            passwordVisible = !passwordVisible;
+                            _passwordVisible = !_passwordVisible;
                           },
                         );
                       },
@@ -114,7 +106,20 @@ class _loginState extends State<login> {
                 padding: EdgeInsets.only(top:50),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, "/clientfeature");
+                    try {
+                      FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: _usernamecont.text.trim(),
+                        password: _userpasscont.text.trim(),
+                      );
+                       ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: const Text("logged in"))
+                      );
+                       Navigator.pushNamed(context, "/cldashboard");
+                    } on FirebaseAuthException catch(e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("${e.message}"))
+                      );
+                    }
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(Colors.black87),
