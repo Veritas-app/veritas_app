@@ -18,7 +18,30 @@ class _chatsectionState extends State<chatsection> {
               backgroundColor: Colors.blueAccent[100],
               title: const Text("Chat bot"),
             ),
+            Row(
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "Full Name",
+                      hintStyle: TextStyle(
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Color.fromRGBO(151, 151, 151, 0.8)
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(27),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    style: TextStyle(
 
+                    ),
+                  ),
+                ]
+            ),
           ],
         ),
       ),

@@ -23,10 +23,10 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.blueAccent[100],
-          body: Column(
+      home: Scaffold(
+        backgroundColor: Colors.blueAccent[100],
+        body: SafeArea(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
