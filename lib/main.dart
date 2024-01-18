@@ -20,7 +20,7 @@ void main(){
   // Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/login",
+    initialRoute: "/first",
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
