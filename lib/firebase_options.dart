@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCEk1-aSxOm1u-vGV9_2-A_F1xKd5FGSQ0',
-    appId: '1:397401474770:android:5625d6a8429c4a2d18cf0b',
-    messagingSenderId: '397401474770',
-    projectId: 'veritas-app-test-96a68',
-    storageBucket: 'veritas-app-test-96a68.appspot.com',
+    apiKey: 'AIzaSyAyqPKt549ToKlBaiNIqtBHTlULNunhPS0',
+    appId: '1:460373651155:android:44536f8f6f64583ec6ae26',
+    messagingSenderId: '460373651155',
+    projectId: 'veritas-dd2cc',
+    storageBucket: 'veritas-dd2cc.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB-ybUxf5hbFEfvNFCvXc2dPXeRYpwEalM',
-    appId: '1:397401474770:ios:e5b083f5458c412f18cf0b',
-    messagingSenderId: '397401474770',
-    projectId: 'veritas-app-test-96a68',
-    storageBucket: 'veritas-app-test-96a68.appspot.com',
+    apiKey: 'AIzaSyB2HmWxBHiUI9tiPtyTkqzaLbyVkILyDXU',
+    appId: '1:460373651155:ios:958f09efa4faddabc6ae26',
+    messagingSenderId: '460373651155',
+    projectId: 'veritas-dd2cc',
+    storageBucket: 'veritas-dd2cc.appspot.com',
     iosBundleId: 'com.cybersapplication.app',
   );
 }

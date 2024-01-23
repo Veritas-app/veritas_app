@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "258861114730",
-    "project_id": "veritas-app-law",
-    "storage_bucket": "veritas-app-law.appspot.com"
+    "project_number": "460373651155",
+    "project_id": "veritas-dd2cc",
+    "storage_bucket": "veritas-dd2cc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:258861114730:android:7f109fcea8ef4deae87113",
+        "mobilesdk_app_id": "1:460373651155:android:44536f8f6f64583ec6ae26",
         "android_client_info": {
           "package_name": "com.cybersapplication.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAO8cGuHEPMYFLafZzNMhCiEQUvgyhuM4s"
+          "current_key": "AIzaSyAyqPKt549ToKlBaiNIqtBHTlULNunhPS0"
         }
       ],
       "services": {

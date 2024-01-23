@@ -18,7 +18,7 @@ class _chatsectionState extends State<chatsection> {
 
       ),
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: <Widget>[
             Align(
               alignment: Alignment.bottomLeft,

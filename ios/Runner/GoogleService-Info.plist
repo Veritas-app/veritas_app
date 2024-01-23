@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAlxmpdAsWnqoxoG-lGJMgKiKNvWz4Ypio</string>
+	<string>AIzaSyB-ybUxf5hbFEfvNFCvXc2dPXeRYpwEalM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>258861114730</string>
+	<string>397401474770</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.cybersapplication.app</string>
 	<key>PROJECT_ID</key>
-	<string>veritas-app-law</string>
+	<string>veritas-app-test-96a68</string>
 	<key>STORAGE_BUCKET</key>
-	<string>veritas-app-law.appspot.com</string>
+	<string>veritas-app-test-96a68.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:258861114730:ios:58bf6782e7f2072fe87113</string>
+	<string>1:397401474770:ios:e5b083f5458c412f18cf0b</string>
 </dict>
 </plist>
