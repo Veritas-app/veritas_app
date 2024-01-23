@@ -16,7 +16,7 @@ Future main() async{
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/signupdetails",
+    initialRoute: "/first",
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
