@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAQd4u3qZ59NqN_HLE41D_tIhGXMHpDeAQ',
-    appId: '1:258861114730:android:7f109fcea8ef4deae87113',
-    messagingSenderId: '258861114730',
-    projectId: 'veritas-app-law',
-    storageBucket: 'veritas-app-law.appspot.com',
+    apiKey: 'AIzaSyCEk1-aSxOm1u-vGV9_2-A_F1xKd5FGSQ0',
+    appId: '1:397401474770:android:5625d6a8429c4a2d18cf0b',
+    messagingSenderId: '397401474770',
+    projectId: 'veritas-app-test-96a68',
+    storageBucket: 'veritas-app-test-96a68.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAQd4u3qZ59NqN_HLE41D_tIhGXMHpDeAQ',
-    appId: '1:258861114730:ios:58bf6782e7f2072fe87113',
-    messagingSenderId: '258861114730',
-    projectId: 'veritas-app-law',
-    storageBucket: 'veritas-app-law.appspot.com',
+    apiKey: 'AIzaSyB-ybUxf5hbFEfvNFCvXc2dPXeRYpwEalM',
+    appId: '1:397401474770:ios:e5b083f5458c412f18cf0b',
+    messagingSenderId: '397401474770',
+    projectId: 'veritas-app-test-96a68',
+    storageBucket: 'veritas-app-test-96a68.appspot.com',
     iosBundleId: 'com.cybersapplication.app',
   );
 }
