@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:veritas/pages/registercase.dart';
 import 'package:veritas/pages/signupdetails.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
@@ -10,14 +9,16 @@ import 'package:veritas/pages/chatscreen.dart';
 
 import "package:firebase_core/firebase_core.dart";
 import 'package:veritas/firebase_options.dart';
+import 'package:veritas/pages/registercase.dart';
 
+// import 'package:veritas/pages/.dart'
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/clientfeature",
+    initialRoute: "/first", 
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
@@ -25,7 +26,7 @@ Future main() async{
       "/login": (context) => login(),
       "/cldashboard": (context) => cldashboard(),
       "/signupdetails": (context) => signInDetails(),
-      "/reg": (context) => regcase(),
+      "/reg":(context) => regcase(),
       "/chat": (context) => chatsection()
     },
   )
