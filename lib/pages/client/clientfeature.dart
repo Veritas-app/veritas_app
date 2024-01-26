@@ -37,7 +37,7 @@ class _clfeatState extends State<clfeat> {
           children: [
             Func.veritastext(),
             SizedBox(
-              height: 700,
+              height: 600,
               width: double.infinity,
               child: PageView.builder(
                 controller: _pageController,
@@ -67,11 +67,11 @@ class _clfeatState extends State<clfeat> {
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           color: Colors.black,
-                          fontSize: 30,
+                          fontSize: 26,
                         ),
                       ),
                       SizedBox(
-                        height: 100,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
