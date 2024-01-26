@@ -21,6 +21,11 @@ flutter:
     - assets/
     - assets/images/
   fonts: 
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
+          weight: 400
+
     - family: Jockey One
       fonts: 
         - asset: assets/fonts/JockeyOneRegular.ttf

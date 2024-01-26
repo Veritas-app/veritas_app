@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
-
 import 'package:veritas/pages/signupdetails.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
@@ -11,21 +8,25 @@ import 'package:veritas/pages/client/clientdashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import "package:firebase_core/firebase_core.dart";
 import 'package:veritas/firebase_options.dart';
+import 'package:veritas/pages/registercase.dart';
 
+// import 'package:veritas/pages/.dart'
 
 void main(){
   // WidgetsFlutterBinding.ensureInitialized();
   // Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/first",
+    initialRoute: "/reg",
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
       "/clientfeature": (context) => clfeat(),
       "/login": (context) => login(),
       "/cldashboard": (context) => cldashboard(),
-      "/signupdetails": (context) => signInDetails()
+      "/signupdetails": (context) => signInDetails(),
+      // "/dashboard":((context) => dashboard()),
+      "/reg":(context) => regcase(),
     },
   )
   );

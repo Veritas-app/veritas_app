@@ -1,56 +1,248 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import "package:veritas/pages/functions.dart";
+// import "package:veritas/pages/functions.dart";
 
-class cldashboard extends StatefulWidget {
-  // const cldashboard({super.key});
+class cldashboard extends StatelessWidget {
+  const cldashboard({Key? key}) : super(key: key);
 
-  @override
-  State<cldashboard> createState() => _cldashboardState();
-}
-
-class _cldashboardState extends State<cldashboard> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-            backgroundColor: Colors.blueAccent[100],
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              // Func.veritastext(),
+    return Scaffold(
+      backgroundColor: const Color.fromRGBO(132, 189, 255, 1),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
               Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical:15,horizontal:16 ),
-                    height: 55,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.all(new Radius.circular(25.7))
-                    ),
-                    child: TextField(
-                      // textInputAction: TextInputAction.next,
-                      // controller: , #################### ADD CONTROLLER
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search),
-                        hintText: 'Search',
-                        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                children: [
+                  // SEARCH BAR
+                  SizedBox(
+                    width: 350,
+                    height: 100,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 20, right: 10),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(200),
+                              borderSide: BorderSide.none),
+                          prefixIcon: Icon(Icons.search_sharp),
+                          hintText: (" Search for Advocates"),
+                          fillColor: Colors.white,
+                          filled: true,
+                        ),
                       ),
                     ),
                   ),
-                  SvgPicture.asset("assets/images/man_4140037 1.svg")
                 ],
-              )
+              ),
 
+              //END OF SEARCH BAR
+              SizedBox(
+                height: 30,
+              ),
+
+              // "NEW CASE CARD" START:
+              Card(
+                shadowColor: Colors.black,
+                elevation: 20,
+                color: Colors.white,
+                borderOnForeground: true,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "New \ncase",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 30),
+                        child: SvgPicture.asset(
+                            "assets/images/Judge-rafiki 1.svg"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // "NEW CASE" CARD END
+
+              // CASE STATUS CARD START
+              Card(
+                elevation: 20,
+                shadowColor: Colors.black,
+                borderOnForeground: true,
+                color: const Color.fromRGBO(29, 29, 29, 1),
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(0),
+                        child: SvgPicture.asset(
+                            "assets/images/Processing-bro 1.svg"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 65, top: 5),
+                        child: Text(
+                          "Case\nStatus",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // "CASE STATUS" CARD END
+
+              // "QUERIES" CARD START
+              Card(
+                elevation: 20,
+                shadowColor: Colors.black,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "Any queries\nregarding\nthe case? ",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          child: SvgPicture.asset("assets/images/queries.svg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                color: const Color.fromRGBO(29, 29, 29, 1),
+                elevation: 20,
+                shadowColor: Colors.black,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "Predict\nthe\ndocuments",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 22,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          child: SvgPicture.asset("assets/images/queries.svg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                
+                shadowColor: Colors.black,
+                elevation: 20,
+                color: Colors.white,
+                borderOnForeground: true,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "Top\nLawyers\nNear\nYou",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 30),
+                        child: SvgPicture.asset(
+                            "assets/images/Judge-rafiki 1.svg"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              
+              // "QUERIES" CARD END
+
+              // BOTTOM NAVIGATION BAR START:
+              
+              // BOTTOM NAVIGATION BAR END
             ],
           ),
-        )
+        ),
       ),
-    );
+      bottomNavigationBar:
+                // padding: const EdgeInsets.only(top: 20),
+                Container(
+                  color: const Color.fromRGBO(29, 29, 29,
+                      1), // Set the color to match the "CASE STATUS" card
+                  child: BottomNavigationBar(
+                    items: const <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.home, color: Colors.white),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.file_copy_sharp, color: Colors.white),
+                        label: 'My Files',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.payment_sharp, color: Colors.white),
+                        label: 'Payments',
+                      ),
+                    ],
+                    backgroundColor: Colors.transparent, // Set to transparent
+                    selectedItemColor: Colors.blue,
+                    unselectedItemColor: Colors.white,
+                    // Add any additional properties you want for the BottomNavigationBar
+                  ),
+                ),
+              );
   }
 }
-

@@ -5,7 +5,7 @@ class ChatBot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromRGBO(132, 189, 255, 1),
       appBar: AppBar(
         backgroundColor:const Color.fromRGBO(132, 189, 255, 1) ,
         title: Text("Chats",
@@ -19,21 +19,10 @@ class ChatBot extends StatelessWidget {
       
       body: SafeArea(
         child: Column(
-          children: [
-            SizedBox(
-              height: 103,
-              width: 193,
-              child: Container(
-                
-              )
-              
-            )
-          ],
 
-
-
-          
         ),
+        
+     
       ),
       
     );
