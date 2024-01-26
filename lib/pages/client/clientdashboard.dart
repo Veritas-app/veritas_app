@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import "package:veritas/pages/functions.dart";
+// import "package:veritas/pages/functions.dart";
 
 class cldashboard extends StatelessWidget {
   const cldashboard({Key? key}) : super(key: key);
@@ -9,31 +9,6 @@ class cldashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(132, 189, 255, 1),
-      bottomNavigationBar:
-      Container(
-        // padding: const EdgeInsets.only(top:20),
-        color: const Color.fromRGBO(29, 29, 29, 1), // Set the color to match the "CASE STATUS" card
-        child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.white),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.file_copy_sharp
-                  , color: Colors.white),
-              label: 'My Files',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.payment_sharp, color: Colors.white),
-              label: 'Payments',
-            ),
-          ],
-          backgroundColor: Colors.transparent, // Set to transparent
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.white,
-          // Add any additional properties you want for the BottomNavigationBar,
-        ),),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -42,11 +17,11 @@ class cldashboard extends StatelessWidget {
                 children: [
                   // SEARCH BAR
                   SizedBox(
-
                     width: 350,
                     height: 100,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 40, top: 20, right: 10),
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 20, right: 10),
                       child: TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -60,18 +35,13 @@ class cldashboard extends StatelessWidget {
                       ),
                     ),
                   ),
-
-
                 ],
               ),
 
               //END OF SEARCH BAR
               SizedBox(
-                height: 30 ,
+                height: 30,
               ),
-
-
-
 
               // "NEW CASE CARD" START:
               Card(
@@ -79,7 +49,6 @@ class cldashboard extends StatelessWidget {
                 elevation: 20,
                 color: Colors.white,
                 borderOnForeground: true,
-
                 margin: const EdgeInsets.all(20),
                 child: SizedBox(
                   height: 145,
@@ -99,7 +68,8 @@ class cldashboard extends StatelessWidget {
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 30),
-                        child: SvgPicture.asset("assets/images/Judge-rafiki 1.svg"),
+                        child: SvgPicture.asset(
+                            "assets/images/Judge-rafiki 1.svg"),
                       ),
                     ],
                   ),
@@ -112,7 +82,6 @@ class cldashboard extends StatelessWidget {
                 elevation: 20,
                 shadowColor: Colors.black,
                 borderOnForeground: true,
-
                 color: const Color.fromRGBO(29, 29, 29, 1),
                 margin: const EdgeInsets.all(20),
                 child: SizedBox(
@@ -122,10 +91,11 @@ class cldashboard extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(0),
-                        child: SvgPicture.asset("assets/images/Processing-bro 1.svg"),
+                        child: SvgPicture.asset(
+                            "assets/images/Processing-bro 1.svg"),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: 65, top: 5), // change the padding ########
+                        padding: EdgeInsets.only(left: 65, top: 5),
                         child: Text(
                           "Case\nStatus",
                           style: TextStyle(
@@ -173,10 +143,106 @@ class cldashboard extends StatelessWidget {
                   ),
                 ),
               ),
+              Card(
+                color: const Color.fromRGBO(29, 29, 29, 1),
+                elevation: 20,
+                shadowColor: Colors.black,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "Predict\nthe\ndocuments",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w800,
+                            fontSize: 22,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 10),
+                          child: SvgPicture.asset("assets/images/queries.svg"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                
+                shadowColor: Colors.black,
+                elevation: 20,
+                color: Colors.white,
+                borderOnForeground: true,
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 25, top: 10),
+                        child: Text(
+                          "Top\nLawyers\nNear\nYou",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 30),
+                        child: SvgPicture.asset(
+                            "assets/images/Judge-rafiki 1.svg"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              
+              // "QUERIES" CARD END
+
+              // BOTTOM NAVIGATION BAR START:
+              
+              // BOTTOM NAVIGATION BAR END
             ],
           ),
         ),
       ),
-    );
+      bottomNavigationBar:
+                // padding: const EdgeInsets.only(top: 20),
+                Container(
+                  color: const Color.fromRGBO(29, 29, 29,
+                      1), // Set the color to match the "CASE STATUS" card
+                  child: BottomNavigationBar(
+                    items: const <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.home, color: Colors.white),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.file_copy_sharp, color: Colors.white),
+                        label: 'My Files',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.payment_sharp, color: Colors.white),
+                        label: 'Payments',
+                      ),
+                    ],
+                    backgroundColor: Colors.transparent, // Set to transparent
+                    selectedItemColor: Colors.blue,
+                    unselectedItemColor: Colors.white,
+                    // Add any additional properties you want for the BottomNavigationBar
+                  ),
+                ),
+              );
   }
 }
