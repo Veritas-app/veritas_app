@@ -2,111 +2,115 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:veritas/pages/functions.dart';
 
-
 class clfeat extends StatefulWidget {
-  // const clfeat({key}) : super(key:key);
+  // const clfeat({super.key});
 
   @override
   State<clfeat> createState() => _clfeatState();
 }
 
 class _clfeatState extends State<clfeat> {
-  late final PageController pageController;
-  int pageNo = 0;
-  int counter = 0;
+  int currentIndex = 0;
 
-  Map feattext = {
-    0: "EASILY REACH ADVOCATES...",
-    1: "CLEAR YOUR DOUBTS RELATED TO YOUR CASE...",
-    2: "PRIVACY REGARDING THE CASE",
-    3: "GET TOP LAWYERS NEAR YOUR AREA",
-  };
-  Map featimg = {
-    0: "assets/images/Business deal.svg",
-    1: "assets/images/Chat bot-pana 1.svg",
-    2: "assets/images/Group 1.svg",
-    3: "assets/images/Lawyer-pana 1.svg",
-  };
+  final PageController _pageController = PageController();
 
-  @override
-  void initState(){
-    pageController = PageController();
-    super.initState();
-  }
+  List<String> images = [
+    "assets/images/Business deal.svg",
+    "assets/images/Chat bot-pana 1.svg",
+    "assets/images/Group 1.svg",
+    "assets/images/Lawyer-pana 1.svg",
+  ];
 
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
+  List<String> texts = [
+    "EASILY REACH ADVOCATES...",
+    "CLEAR YOUR DOUBTS RELATED TO YOUR CASE...",
+    "PRIVACY REGARDING THE CASE",
+    "GET TOP LAWYERS NEAR YOUR AREA",
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.blueAccent[100],
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Func.veritastext(),
-              SizedBox(
-                height: 600,
-                child: PageView.builder(
-                    controller: pageController,
-                    onPageChanged: (index){
-                      pageNo = index;
-                      counter = index;
-                      setState(() {
-
-                      });
-                    },
-                    itemBuilder: (_, index) {
-                      return AnimatedBuilder(
-                        animation: pageController,
-                        builder: (context,child){
-                          return child!;
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.all(10),
-                          color: Colors.blueAccent[100],
-                          child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              SvgPicture.asset(featimg[counter]),
-                              SizedBox(height: 8),
-                              Text(feattext[counter],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.black,
-                                  fontSize: 30,
-                                ),
-                              ),
-                            ],
-                          ),
+    return Scaffold(
+      backgroundColor: Colors.blueAccent[100],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Func.veritastext(),
+            SizedBox(
+              height: 700,
+              width: double.infinity,
+              child: PageView.builder(
+                controller: _pageController,
+                onPageChanged: (index){
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                itemCount: images.length,
+                itemBuilder: (contxt,index){
+                  return Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        height: 400,
+                        child: SvgPicture.asset(images[index]),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        texts[index],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                          fontSize: 30,
                         ),
-                      );
-                    },
-                    itemCount: 4),
+                      ),
+                      SizedBox(
+                        height: 100,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          for (var i=0;i<images.length;i++)
+                            indicator(currentIndex==i)
+                        ],
+                      ),
+                    ],
+                  );
+                },
               ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(4,(index) => Container(
-                  margin: const EdgeInsets.all(4),
-                  child: Icon(
-                    Icons.circle,
-                    size:18,
-                    color: pageNo == index
-                        ? Colors.black
-                        : Colors.grey,
-                  ),
-                ),
-                ),
+            ),
+            Container(
+              padding: EdgeInsets.only(right:10),
+              alignment: Alignment.topRight,
+              child: FloatingActionButton(
+                onPressed: (){
+                  _pageController.jumpToPage(currentIndex+1);
+                },
+                backgroundColor: Colors.black,
+                shape: CircleBorder(),
+                child: Icon(Icons.arrow_forward,color: Colors.white,),
               ),
-            ],
-          ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  Widget indicator(bool isSelected){
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        height: isSelected?20:15,
+        width: isSelected?20:15,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isSelected ? Colors.black : Colors.white,
         ),
       ),
     );
