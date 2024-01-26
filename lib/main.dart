@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:veritas/pages/registercase.dart';
 import 'package:veritas/pages/signupdetails.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
@@ -24,6 +25,7 @@ Future main() async{
       "/login": (context) => login(),
       "/cldashboard": (context) => cldashboard(),
       "/signupdetails": (context) => signInDetails(),
+      "/reg": (context) => regcase(),
       "/chat": (context) => chatsection()
     },
   )
