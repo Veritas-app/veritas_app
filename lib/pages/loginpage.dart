@@ -11,15 +11,9 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
-  bool _passwordVisible=false;
+  bool _passwordVisible=true;
   final _usernamecont = TextEditingController();
   final _userpasscont = TextEditingController();
-
-  @override
-  void initstate(){
-    this.initState();
-    _passwordVisible=true;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +101,7 @@ class _loginState extends State<login> {
               child: ElevatedButton(
                 onPressed: () async {
                   try {
-                    UserCredential userCredential =
+                    // UserCredential userCredential =
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: _usernamecont.text.trim(),
                       password: _userpasscont.text.trim(),
