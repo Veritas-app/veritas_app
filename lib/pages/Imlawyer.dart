@@ -62,7 +62,9 @@ class firstpg extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top:30),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/lawyerfeat");
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(Colors.white),
                     padding: MaterialStateProperty.all(

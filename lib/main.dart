@@ -10,6 +10,7 @@ import 'package:veritas/pages/chatscreen.dart';
 import "package:firebase_core/firebase_core.dart";
 import 'package:veritas/firebase_options.dart';
 import 'package:veritas/pages/registercase.dart';
+import "package:veritas/pages/lawyer/lawyerfeat.dart";
 
 // import 'package:veritas/pages/.dart'
 
@@ -18,10 +19,11 @@ Future main() async{
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/first", 
+    initialRoute: "/lawyerfeat",
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),
+      "/lawyerfeat": (context) => lawfeat(),
       "/clientfeature": (context) => clfeat(),
       "/login": (context) => login(),
       "/cldashboard": (context) => cldashboard(),
