@@ -50,7 +50,7 @@ class _chatsectionState extends State<chatsection> {
       ),
       appBar: AppBar(
         backgroundColor: Colors.blueAccent[100],
-        title: const Text("Chat bot"),
+        title: const Text("Chat Bot"),
         // elevation: 60,
 
       ),
@@ -124,6 +124,7 @@ class _chatsectionState extends State<chatsection> {
                   }
                   return Expanded(
                     child: SingleChildScrollView(
+
                       child: Column(
                         children: messagesent,
                       ),
@@ -167,20 +168,21 @@ class _chatsectionState extends State<chatsection> {
                         final String currentUserId = _firebaseAuth.currentUser!.uid;
                         final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
                         final Timestamp timestamp = Timestamp.now();
-
-                        Message newMessage = Message(
-                            senderId: currentUserId,
-                            senderEmail: currentUserEmail,
-                            recieverId: "chatbot",
-                            recieverEmail: "NaN",
-                            message: _message.text.trim(),
-                            timestamp: timestamp);
-                        _db
-                            .collection("chat_room")
-                            .doc(getChatRoomId())
-                            .collection("message")
-                            .add(newMessage.toMap());
-                        _message.clear();
+                        if (_message.text.isNotEmpty) {
+                          Message newMessage = Message(
+                              senderId: currentUserId,
+                              senderEmail: currentUserEmail,
+                              recieverId: "chatbot",
+                              recieverEmail: "NaN",
+                              message: _message.text.trim(),
+                              timestamp: timestamp);
+                          _db
+                              .collection("chat_room")
+                              .doc(getChatRoomId())
+                              .collection("message")
+                              .add(newMessage.toMap());
+                          _message.clear();
+                        }
                       },
                       backgroundColor: Colors.blueAccent[100],
                       shape: CircleBorder(),
