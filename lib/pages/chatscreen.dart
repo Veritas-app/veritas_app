@@ -136,9 +136,9 @@ class _chatsectionState extends State<chatsection> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.all(10.0),
+                      margin: EdgeInsets.all(8.0),
                       height: 55,
-                      width: 320,
+                      width: 280,
                       decoration: BoxDecoration(
                           color: Colors.blueAccent[100],
                           shape: BoxShape.rectangle,

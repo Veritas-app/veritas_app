@@ -47,7 +47,7 @@ class _clfeatState extends State<clfeat> {
                   });
                 },
                 itemCount: images.length,
-                itemBuilder: (contxt,index){
+                itemBuilder: (context,index){
                   return Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -89,8 +89,18 @@ class _clfeatState extends State<clfeat> {
               padding: EdgeInsets.only(right:10),
               alignment: Alignment.topRight,
               child: FloatingActionButton(
-                onPressed: (){
-                  _pageController.jumpToPage(currentIndex+1);
+                // onPressed: (){
+                //   _pageController.jumpToPage(currentIndex+1);
+                // },
+                onPressed: () {
+                  if (currentIndex == images.length - 1) {
+                    Navigator.pushNamed(context, "/login");
+                  } else {
+                    _pageController.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  }
                 },
                 backgroundColor: Colors.black,
                 shape: CircleBorder(),

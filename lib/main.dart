@@ -9,17 +9,26 @@ import 'package:veritas/pages/chatscreen.dart';
 
 import "package:firebase_core/firebase_core.dart";
 import 'package:veritas/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:veritas/pages/registercase.dart';
 import "package:veritas/pages/lawyer/lawyerfeat.dart";
 
 // import 'package:veritas/pages/.dart'
 
 Future main() async{
+  String a = "";
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseAuth.instance.idTokenChanges().listen((User? user) {
+    if (user == null) {
+      a = "/first";
+    } else {
+      a = "/cldashboard";
+    }
+  });
   return runApp(MaterialApp(
     // home: Splash(),
-    initialRoute: "/first",
+    initialRoute: a,
     routes: {
       "/": (context) => splash(),
       "/first": (context) => firstpg(),

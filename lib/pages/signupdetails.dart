@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:veritas/pages/client/clientdashboard.dart';
 
 
 class signInDetails extends StatefulWidget {
@@ -192,11 +193,16 @@ class _signInDetailsState extends State<signInDetails> {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: const Text("logged in"))
                     );
-                    Navigator.pushNamed(context, "/cldashboard");
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => cldashboard()),
+                          (Route<dynamic> route) => route.isFirst,
+                    );
                   } on FirebaseAuthException catch(e) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${e.message}")));
-                    }
-                    },
+                  }
+                },
               ),
             ],
           ),

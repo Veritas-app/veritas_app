@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import "package:veritas/pages/functions.dart";
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:veritas/pages/hero_dialog_route.dart';
 
 class cldashboard extends StatelessWidget {
   const cldashboard({Key? key}) : super(key: key);
@@ -12,35 +13,58 @@ class cldashboard extends StatelessWidget {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  // SEARCH BAR
-                  SizedBox(
+                  Container(
+                    alignment: Alignment.center,
                     width: 350,
                     height: 100,
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(left: 40, top: 20, right: 10),
+                    child: SizedBox(
+                      height: 60,
                       child: TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(200),
                               borderSide: BorderSide.none),
                           prefixIcon: Icon(Icons.search_sharp),
-                          hintText: (" Search for Advocates"),
+                          hintText: ("Search for Advocates"),
                           fillColor: Colors.white,
                           filled: true,
                         ),
                       ),
                     ),
                   ),
+                  Positioned(
+                      left: 285,
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        child: GestureDetector(
+                            onTap: (){
+                              // Navigator.pushNamed(context, "/jhujuk");
+                              Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                                return const _PopupCard();
+                              }));
+                            },
+                            child: Hero(
+                              tag: "profile",
+                              child:SvgPicture.asset(
+                                "assets/images/man-user-circle-icon 1.svg",
+                                fit: BoxFit.fill,
+                              ),
+                            )
+                        ),
+                      )
+                  ),
                 ],
               ),
 
               //END OF SEARCH BAR
               SizedBox(
-                height: 30,
+                height: 20,
               ),
 
               // "NEW CASE CARD" START:
@@ -113,33 +137,36 @@ class cldashboard extends StatelessWidget {
               // "CASE STATUS" CARD END
 
               // "QUERIES" CARD START
-              Card(
-                elevation: 20,
-                shadowColor: Colors.black,
-                margin: const EdgeInsets.all(20),
-                child: SizedBox(
-                  height: 145,
-                  width: 312,
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 25, top: 10),
-                        child: Text(
-                          "Any queries\nregarding\nthe case? ",
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontWeight: FontWeight.w800,
-                            fontSize: 22,
+              InkWell(
+                onTap: (){Navigator.pushNamed(context, "/chat");},
+                child: Card(
+                  elevation: 20,
+                  shadowColor: Colors.black,
+                  margin: const EdgeInsets.all(20),
+                  child: SizedBox(
+                    height: 145,
+                    width: 312,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 25, top: 10),
+                          child: Text(
+                            "Any queries\nregarding\nthe case? ",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w800,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
-                      ),
-                      Center(
-                        child: Container(
-                          padding: EdgeInsets.only(left: 10),
-                          child: SvgPicture.asset("assets/images/queries.svg"),
+                        Center(
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: SvgPicture.asset("assets/images/queries.svg"),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -176,7 +203,7 @@ class cldashboard extends StatelessWidget {
                 ),
               ),
               Card(
-                
+
                 shadowColor: Colors.black,
                 elevation: 20,
                 color: Colors.white,
@@ -207,42 +234,101 @@ class cldashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               // "QUERIES" CARD END
 
               // BOTTOM NAVIGATION BAR START:
-              
+
               // BOTTOM NAVIGATION BAR END
             ],
           ),
         ),
       ),
       bottomNavigationBar:
-                // padding: const EdgeInsets.only(top: 20),
-                Container(
-                  color: const Color.fromRGBO(29, 29, 29,
-                      1), // Set the color to match the "CASE STATUS" card
-                  child: BottomNavigationBar(
-                    items: const <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home, color: Colors.white),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.file_copy_sharp, color: Colors.white),
-                        label: 'My Files',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.payment_sharp, color: Colors.white),
-                        label: 'Payments',
-                      ),
-                    ],
-                    backgroundColor: Colors.transparent, // Set to transparent
-                    selectedItemColor: Colors.blue,
-                    unselectedItemColor: Colors.white,
-                    // Add any additional properties you want for the BottomNavigationBar
-                  ),
+      // padding: const EdgeInsets.only(top: 20),
+      Container(
+        color: const Color.fromRGBO(29, 29, 29,
+            1), // Set the color to match the "CASE STATUS" card
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.white),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.file_copy_sharp, color: Colors.white),
+              label: 'My Files',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.payment_sharp, color: Colors.white),
+              label: 'Payments',
+            ),
+          ],
+          backgroundColor: Colors.transparent, // Set to transparent
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.white,
+          // Add any additional properties you want for the BottomNavigationBar
+        ),
+      ),
+    );
+  }
+}
+class _PopupCard extends StatelessWidget {
+  /// {@macro add_todo_popup_card}
+  const _PopupCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        child: Hero(
+            tag: "profile",
+            child: Material(
+              color: Colors.white,
+              elevation: 2,
+              shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SvgPicture.asset("assets/images/man-user-circle-icon 1.svg",),
+                    const Divider(
+                      color: Colors.black,
+                      thickness: 1,
+                    ),
+                    TextButton(
+                        onPressed: (){},
+                        child: Text("profile")
+                    ),
+                    TextButton(
+                        onPressed: (){
+                          try{
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, "/login");
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: const Text("logged out "))
+                            );
+                          }on FirebaseAuthException catch(e){
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text("${e.message}")
+                                )
+                            );
+                          }
+                        },
+                        child: Text("log out")
+                    ),
+
+                  ],
                 ),
-              );
+              ),
+            )
+        ),
+      ),
+    );
   }
 }
