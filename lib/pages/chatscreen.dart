@@ -168,7 +168,7 @@ class _chatsectionState extends State<chatsection> {
                         final String currentUserId = _firebaseAuth.currentUser!.uid;
                         final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
                         final Timestamp timestamp = Timestamp.now();
-                        if (_message.text.isNotEmpty) {
+                        if (_message.text.trim().isNotEmpty) {
                           Message newMessage = Message(
                               senderId: currentUserId,
                               senderEmail: currentUserEmail,
