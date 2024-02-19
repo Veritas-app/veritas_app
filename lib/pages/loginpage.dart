@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
 import 'package:veritas/pages/functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
 
 class login extends StatefulWidget {
+  final String usertype;
+
+  login({Key? key, required this.usertype}) : super(key: key);
 
   @override
   State<login> createState() => _loginState();
@@ -103,20 +106,35 @@ class _loginState extends State<login> {
                 child: ElevatedButton(
                   onPressed: () async {
                     try {
-                      // UserCredential userCredential =
-                      await FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: _usernamecont.text.trim(),
-                        password: _userpasscont.text.trim(),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: const Text("logged in "))
-                      );
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => cldashboard()),
-                            (Route<dynamic> route) => route.isFirst,
-                      );
+                      if (widget.usertype == "client"){
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: _usernamecont.text.trim(),
+                          password: _userpasscont.text.trim(),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: const Text("logged in "))
+                        );
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => cldashboard()),
+                              (Route<dynamic> route) => route.isFirst,
+                        );
+                      }else {
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: _usernamecont.text.trim(),
+                          password: _userpasscont.text.trim(),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: const Text("logged in "))
+                        );
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => lawyerdashboard()),
+                              (Route<dynamic> route) => route.isFirst,
+                        );
+                      }
                     } on FirebaseAuthException catch(e) {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("${e.message}"))

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:veritas/pages/functions.dart';
+import 'package:veritas/pages/loginpage.dart';
 
 class clfeat extends StatefulWidget {
   // const clfeat({super.key});
@@ -89,12 +90,9 @@ class _clfeatState extends State<clfeat> {
               padding: EdgeInsets.only(right:10),
               alignment: Alignment.topRight,
               child: FloatingActionButton(
-                // onPressed: (){
-                //   _pageController.jumpToPage(currentIndex+1);
-                // },
                 onPressed: () {
                   if (currentIndex == images.length - 1) {
-                    Navigator.pushNamed(context, "/login");
+                    Navigator.pushNamed(context, "/loginclient");
                   } else {
                     _pageController.nextPage(
                       duration: Duration(milliseconds: 500),

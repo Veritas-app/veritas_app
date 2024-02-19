@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:veritas/pages/hero_dialog_route.dart';
 
-class cldashboard extends StatelessWidget {
-  const cldashboard({Key? key}) : super(key: key);
+class lawyerdashboard extends StatelessWidget {
+  const lawyerdashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class cldashboard extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 25, top: 10),
                         child: Text(
-                          "New \ncase",
+                          "New \ncase #############",
                           style: TextStyle(
                             fontFamily: "Roboto",
                             fontWeight: FontWeight.w700,
@@ -307,7 +307,7 @@ class _PopupCard extends StatelessWidget {
                         onPressed: (){
                           try{
                             FirebaseAuth.instance.signOut();
-                            Navigator.pushNamedAndRemoveUntil(context, "/loginclient", (route) => false);
+                            Navigator.pushNamedAndRemoveUntil(context, "/loginlawyer", (route) => false);
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: const Text("logged out "))
                             );

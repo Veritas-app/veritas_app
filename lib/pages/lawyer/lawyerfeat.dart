@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:veritas/pages/functions.dart';
+import 'package:veritas/pages/loginpage.dart';
 
 class lawfeat extends StatefulWidget {
   // const clfeat({super.key});
@@ -45,7 +46,7 @@ class _clfeatState extends State<lawfeat> {
                   });
                 },
                 itemCount: images.length,
-                itemBuilder: (contxt,index){
+                itemBuilder: (context,index){
                   return Column(
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -87,8 +88,15 @@ class _clfeatState extends State<lawfeat> {
               padding: EdgeInsets.only(right:10),
               alignment: Alignment.topRight,
               child: FloatingActionButton(
-                onPressed: (){
-                  _pageController.jumpToPage(currentIndex+1);
+                onPressed: () {
+                  if (currentIndex == images.length - 1) {
+                    Navigator.pushNamed(context,"/loginlawyer");
+                  } else {
+                    _pageController.nextPage(
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  }
                 },
                 backgroundColor: Colors.black,
                 shape: CircleBorder(),
