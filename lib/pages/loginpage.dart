@@ -1,4 +1,3 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
 import 'package:veritas/pages/functions.dart';
@@ -120,7 +119,7 @@ class _loginState extends State<login> {
                               builder: (BuildContext context) => cldashboard()),
                               (Route<dynamic> route) => route.isFirst,
                         );
-                      }else {
+                      }else if (widget.usertype == "lawyer") {
                         await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: _usernamecont.text.trim(),
                           password: _userpasscont.text.trim(),
@@ -159,11 +158,15 @@ class _loginState extends State<login> {
               ),
               Container(
                   padding: EdgeInsets.only(top:10),
-                  child: IconButton(
-                      onPressed : (){
-                        Navigator.pushNamed(context, "/signupdetails");
+                  child: TextButton(
+                      onPressed : () {
+                        if (widget.usertype == "client") {
+                          Navigator.pushNamed(context, "/signupdetails_client");
+                        } else if (widget.usertype == "lawyer"){
+                          Navigator.pushNamed(context, "/signupdetails_lawyer");
+                        }
                       },
-                      icon: Icon(Icons.add_box_outlined)
+                      child: Text("New here!! SignUp"),
                   )
               )
             ],

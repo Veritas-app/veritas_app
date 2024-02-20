@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veritas/pages/signupdetails_client.dart';
+import 'package:veritas/pages/signupdetails_lawyer.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
 import 'package:veritas/pages/client/clientfeature.dart';
@@ -15,7 +16,6 @@ import "package:veritas/pages/lawyer/lawyerfeat.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
 
-// import 'package:veritas/pages/.dart'
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       return '/first';
     } else {
       try {
-        final snapshot = await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+        final snapshot = await FirebaseFirestore.instance.collection("client").doc(user.uid).get();
         if (snapshot.exists) {
           return '/cldashboard';
         } else {
@@ -57,15 +57,14 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Return a loading indicator or splash screen while determining initial route
-          // return CircularProgressIndicator();
-          return MaterialApp();
+          return MaterialApp(); // splash screen
         } else {
           if (snapshot.hasError) {
             // Handle error if any
             return Text('Error: ${snapshot.error}');
           } else {
             return MaterialApp(
-              initialRoute: '/regcase', // Use initialRoute when available, otherwise fallback to '/first'
+              initialRoute: snapshot.data ?? '/first', // Use initialRoute when available, otherwise fallback to '/first'
               routes: {
                 "/": (context) => splash(),
                 "/first": (context) => firstpg(),
@@ -75,10 +74,10 @@ class MyApp extends StatelessWidget {
                 "/loginlawyer": (context) => login(usertype: "lawyer"),
                 "/cldashboard": (context) => cldashboard(),
                 "/lawyerdashboard": (context) => lawyerdashboard(),
-                "/signupdetails": (context) => signInDetails(),
+                "/signupdetails_client": (context) => signInDetails_client(),
+                "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
                 "/reg": (context) => regcase(),
-                "/chat": (context) => chatsection(),
-                "/regcase":(context) => regcase(),
+                "/chat": (context) => chatsection(receivertype: "chatbot",)
               },
             );
           }

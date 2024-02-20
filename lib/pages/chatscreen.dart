@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:veritas/messages.dart';
+import 'package:http/http.dart' as http;
 
 class chatsection extends StatefulWidget {
+  final String receivertype;
+
+  chatsection({Key? key, required this.receivertype}) : super(key: key);
+
   @override
   State<chatsection> createState() => _chatsectionState();
 }
@@ -13,12 +20,48 @@ class _chatsectionState extends State<chatsection> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   TextEditingController _message = TextEditingController();
 
+
   String getChatRoomId() {
     final String currentUserId = _firebaseAuth.currentUser!.uid;
-    List<String> ids = [currentUserId, "chatbot"];
+    List<String> ids = [currentUserId, widget.receivertype];
     ids.sort();
     return ids.join("_");
   }
+
+  void getAiResponse(String message,String currentUserId, String currentUserEmail) async{
+    // this fuction should update the db and receive the response from api
+
+    final url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDf2x-ENW14KrJEJZSIgY4LLnTv6ns52bQ";
+    final header = {
+      "Content-Type": "application/json",
+    };
+    final data = {"contents":[{"parts":[{"text":message}]}]};
+    final Timestamp timestamp = Timestamp.now();
+    await http.post(Uri.parse(url),headers: header,body: jsonEncode(data))
+        .then((value){
+          if (value.statusCode==200){
+            var response = jsonDecode(value.body)['candidates'][0]['content']['parts'][0]['text'];
+            Message newMessage = Message(
+                senderId: widget.receivertype,
+                senderEmail: "NaN",
+                recieverId: currentUserId,
+                recieverEmail: currentUserEmail,
+                message: response,
+                timestamp: timestamp);
+            _db
+                .collection("chat_room")
+                .doc(getChatRoomId())
+                .collection("message")
+                .add(newMessage.toMap());
+          }
+    }).catchError((e){
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //     SnackBar(content: const Text("${e.message}"))
+      // );
+    }
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +215,7 @@ class _chatsectionState extends State<chatsection> {
                           Message newMessage = Message(
                               senderId: currentUserId,
                               senderEmail: currentUserEmail,
-                              recieverId: "chatbot",
+                              recieverId: widget.receivertype,
                               recieverEmail: "NaN",
                               message: _message.text.trim(),
                               timestamp: timestamp);
@@ -181,13 +224,15 @@ class _chatsectionState extends State<chatsection> {
                               .doc(getChatRoomId())
                               .collection("message")
                               .add(newMessage.toMap());
+                          if (widget.receivertype == "chatbot") {
+                            getAiResponse(_message.text.trim(),currentUserId,currentUserEmail);
+                          }
                           _message.clear();
                         }
                       },
                       backgroundColor: Colors.blueAccent[100],
                       shape: CircleBorder(),
                       child: Icon(Icons.send, color: Colors.black, size: 35,),
-
                     ),
                   ]
               ),
