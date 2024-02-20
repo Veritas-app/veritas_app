@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veritas/pages/signupdetails_client.dart';
+import 'package:veritas/pages/signupdetails_lawyer.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
 import 'package:veritas/pages/client/clientfeature.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       return '/first';
     } else {
       try {
-        final snapshot = await FirebaseFirestore.instance.collection("users").doc(user.uid).get();
+        final snapshot = await FirebaseFirestore.instance.collection("client").doc(user.uid).get();
         if (snapshot.exists) {
           return '/cldashboard';
         } else {
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Return a loading indicator or splash screen while determining initial route
           // return CircularProgressIndicator();
-          return MaterialApp();
+          return MaterialApp(); // splash screen
         } else {
           if (snapshot.hasError) {
             // Handle error if any
@@ -75,7 +76,8 @@ class MyApp extends StatelessWidget {
                 "/loginlawyer": (context) => login(usertype: "lawyer"),
                 "/cldashboard": (context) => cldashboard(),
                 "/lawyerdashboard": (context) => lawyerdashboard(),
-                "/signupdetails": (context) => signInDetails(),
+                "/signupdetails_client": (context) => signInDetails_client(),
+                "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
                 "/reg": (context) => regcase(),
                 "/chat": (context) => chatsection()
               },

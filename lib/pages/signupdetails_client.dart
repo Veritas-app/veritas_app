@@ -5,12 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
 
 
-class signInDetails extends StatefulWidget {
+class signInDetails_client extends StatefulWidget {
   @override
-  State<signInDetails> createState() => _signInDetailsState();
+  State<signInDetails_client> createState() => _signInDetailsState();
 }
 
-class _signInDetailsState extends State<signInDetails> {
+class _signInDetailsState extends State<signInDetails_client> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -184,7 +184,7 @@ class _signInDetailsState extends State<signInDetails> {
                       email: _emailController.text.trim(),
                       password: _passwordController.text.trim(),
                     );
-                    FirebaseFirestore.instance.collection("user").doc(userCredential.user!.uid).set({
+                    FirebaseFirestore.instance.collection("client").doc(userCredential.user!.uid).set({
                       "uid": userCredential.user!.uid,
                       "username":_usernameController.text.trim(),
                       "email": _emailController.text.trim(),
@@ -212,10 +212,3 @@ class _signInDetailsState extends State<signInDetails> {
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: MyHomePage(),
-//     debugShowCheckedModeBanner: false,
-//   ));
-// }
