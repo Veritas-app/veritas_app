@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
             return Text('Error: ${snapshot.error}');
           } else {
             return MaterialApp(
-              initialRoute: snapshot.data ?? '/first', // Use initialRoute when available, otherwise fallback to '/first'
+              initialRoute: '/regcase', // Use initialRoute when available, otherwise fallback to '/first'
               routes: {
                 "/": (context) => splash(),
                 "/first": (context) => firstpg(),
@@ -77,7 +77,8 @@ class MyApp extends StatelessWidget {
                 "/lawyerdashboard": (context) => lawyerdashboard(),
                 "/signupdetails": (context) => signInDetails(),
                 "/reg": (context) => regcase(),
-                "/chat": (context) => chatsection()
+                "/chat": (context) => chatsection(),
+                "/regcase":(context) => regcase(),
               },
             );
           }
