@@ -1,4 +1,3 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
 import 'package:veritas/pages/functions.dart';
@@ -159,7 +158,7 @@ class _loginState extends State<login> {
               ),
               Container(
                   padding: EdgeInsets.only(top:10),
-                  child: IconButton(
+                  child: TextButton(
                       onPressed : () {
                         if (widget.usertype == "client") {
                           Navigator.pushNamed(context, "/signupdetails_client");
@@ -167,7 +166,7 @@ class _loginState extends State<login> {
                           Navigator.pushNamed(context, "/signupdetails_lawyer");
                         }
                       },
-                      icon: Icon(Icons.add_box_outlined)
+                      child: Text("New here!! SignUp"),
                   )
               )
             ],

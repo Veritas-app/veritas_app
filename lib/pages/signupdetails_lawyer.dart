@@ -5,7 +5,6 @@ import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
 
 
 class signInDetails_lawyer extends StatefulWidget {
-  // String verificationid;
 
   @override
   State<signInDetails_lawyer> createState() => _signInDetailsState();

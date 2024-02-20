@@ -16,7 +16,6 @@ import "package:veritas/pages/lawyer/lawyerfeat.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
 
-// import 'package:veritas/pages/.dart'
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +57,6 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Return a loading indicator or splash screen while determining initial route
-          // return CircularProgressIndicator();
           return MaterialApp(); // splash screen
         } else {
           if (snapshot.hasError) {
