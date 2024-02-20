@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
                 "/signupdetails_client": (context) => signInDetails_client(),
                 "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
                 "/reg": (context) => regcase(),
-                "/chat": (context) => chatsection()
+                "/chat": (context) => chatsection(receivertype: "chatbot",)
               },
             );
           }
