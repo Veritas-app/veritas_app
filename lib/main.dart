@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
                 "/lawyerdashboard": (context) => lawyerdashboard(),
                 "/signupdetails_client": (context) => signInDetails_client(),
                 "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
-                "/reg": (context) => regcase(),
-                "/chat": (context) => chatsection(receivertype: "chatbot",)
+                "/chat": (context) => chatsection(receivertype: "chatbot",),
+                "/regcase":(context) => regcase(),
               },
             );
           }

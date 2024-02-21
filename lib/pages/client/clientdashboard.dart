@@ -61,47 +61,43 @@ class cldashboard extends StatelessWidget {
                   ),
                 ],
               ),
-
-              //END OF SEARCH BAR
               SizedBox(
                 height: 20,
               ),
-
-              // "NEW CASE CARD" START:
-              Card(
-                shadowColor: Colors.black,
-                elevation: 20,
-                color: Colors.white,
-                borderOnForeground: true,
-                margin: const EdgeInsets.all(20),
-                child: SizedBox(
-                  height: 145,
-                  width: 312,
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 25, top: 10),
-                        child: Text(
-                          "New \ncase",
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24,
+              InkWell(
+                onTap: (){Navigator.pushNamed(context, "/regcase");},
+                child: Card(
+                  shadowColor: Colors.black,
+                  elevation: 20,
+                  color: Colors.white,
+                  borderOnForeground: true,
+                  margin: const EdgeInsets.all(20),
+                  child: SizedBox(
+                    height: 145,
+                    width: 312,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 25, top: 10),
+                          child: Text(
+                            "New \ncase",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 30),
-                        child: SvgPicture.asset(
-                            "assets/images/Judge-rafiki 1.svg"),
-                      ),
-                    ],
+                        Container(
+                          padding: EdgeInsets.only(left: 30),
+                          child: SvgPicture.asset(
+                              "assets/images/Judge-rafiki 1.svg"),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              // "NEW CASE" CARD END
-
-              // CASE STATUS CARD START
               Card(
                 elevation: 20,
                 shadowColor: Colors.black,
@@ -134,9 +130,6 @@ class cldashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              // "CASE STATUS" CARD END
-
-              // "QUERIES" CARD START
               InkWell(
                 onTap: (){Navigator.pushNamed(context, "/chat");},
                 child: Card(
@@ -234,12 +227,6 @@ class cldashboard extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // "QUERIES" CARD END
-
-              // BOTTOM NAVIGATION BAR START:
-
-              // BOTTOM NAVIGATION BAR END
             ],
           ),
         ),

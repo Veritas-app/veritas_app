@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class regcase extends StatefulWidget {
@@ -9,7 +11,13 @@ class regcase extends StatefulWidget {
 
 class _regcaseState extends State<regcase> {
   String? _selectedOption;
-  bool _isChecked = false;
+  bool? _isChecked = false;
+
+
+  TextEditingController _locationCont = TextEditingController();
+  TextEditingController _dateCont = TextEditingController();
+  TextEditingController _descriptionCont = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +27,16 @@ class _regcaseState extends State<regcase> {
         color: const Color.fromRGBO(132, 189, 255, 1),
         child: Column(
           children: [
+            AppBar(
+              title: const Text("Register a Case"),
+              backgroundColor: Color.fromRGBO(132, 189, 255, 1),
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20), // Vertical space
+                    // SizedBox(height: 20), // Vertical space
                     Padding(
                       padding: const EdgeInsets.fromLTRB(21, 40, 21, 0), // Left and right padding
                       child: Container(
@@ -102,6 +114,7 @@ class _regcaseState extends State<regcase> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
+                          controller: _locationCont,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -126,6 +139,7 @@ class _regcaseState extends State<regcase> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
+                          controller: _dateCont,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -150,6 +164,7 @@ class _regcaseState extends State<regcase> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextField(
+                          controller: _descriptionCont,
                           maxLines: 3,
                           decoration: InputDecoration(
                             filled: true,
@@ -209,9 +224,9 @@ class _regcaseState extends State<regcase> {
                           children: [
                             Checkbox(
                               value: _isChecked,
-                              onChanged: (newValue) {
+                              onChanged: (bool? value) {
                                 setState(() {
-                                  _isChecked = newValue!;
+                                  _isChecked = value;
                                 });
                               },
                             ),
@@ -219,7 +234,7 @@ class _regcaseState extends State<regcase> {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8), // Adjust left padding
                                 child: Text(
-                                  'I certify that the above facts are true\nto the best of\nmy knowledge',
+                                  'I certify that the above facts are true to the best of my knowledge.',
                                   style: TextStyle(
                                     color: Colors.white,
                                   ),
@@ -233,22 +248,43 @@ class _regcaseState extends State<regcase> {
                     SizedBox(height: 20), // Additional vertical space
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0), // Left and right padding
-                      child: Container(
-                        height: 65,
-                        width: 353,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                      child: ElevatedButton(
+                        child:SizedBox(
+                          height: 65,
+                          width: 353,
+                          child: Center(
+                            child: Text(
+                              'Submit',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20
+                              ),
                             ),
                           ),
                         ),
+                        style: ElevatedButton.styleFrom(
+                          shape : RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0)
+                          ),
+                          backgroundColor: Colors.black,
+                        ),
+                        onPressed: () {
+                          final user = FirebaseAuth.instance.currentUser;
+                          FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").doc(user!.uid).set({
+                            "clientName" : user.displayName,
+                            "clientEmail" : user.email,
+                            "caseType" : _selectedOption,
+                            "location" : _locationCont.text.trim(),
+                            "date" : _dateCont.text.trim(),
+                            "briefing" : _descriptionCont.text.trim(),
+                          });
+                          _locationCont.clear();
+                          _dateCont.clear();
+                          _descriptionCont.clear();
+                          // _isChecked = false;
+                          // _selectedOption = null;
+                        },
                       ),
                     ),
                   ],
@@ -258,21 +294,28 @@ class _regcaseState extends State<regcase> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.black), // Setting icon color
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.folder, color: Colors.black), // Setting icon color
-            label: 'My Files',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment, color: Colors.black), // Setting icon color
-            label: 'Payments',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        color: const Color.fromRGBO(29, 29, 29, 1), // Set the color to match the "CASE STATUS" card
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.white),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.file_copy_sharp, color: Colors.white),
+              label: 'My Files',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.payment_sharp, color: Colors.white),
+              label: 'Payments',
+            ),
+          ],
+          backgroundColor: Colors.transparent, // Set to transparent
+          selectedItemColor: Colors.blue,
+          unselectedItemColor: Colors.white,
+          // Add any additional properties you want for the BottomNavigationBar
+        ),
       ),
     );
   }

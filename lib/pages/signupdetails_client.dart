@@ -178,11 +178,11 @@ class _signInDetailsState extends State<signInDetails_client> {
                 ),
                 onPressed: () async{
                   try{
-                    UserCredential userCredential =
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                       email: _emailController.text.trim(),
                       password: _passwordController.text.trim(),
                     );
+                    userCredential.user?.updateDisplayName(_usernameController.text.trim());
                     FirebaseFirestore.instance.collection("client").doc(userCredential.user!.uid).set({
                       "uid": userCredential.user!.uid,
                       "username":_usernameController.text.trim(),
