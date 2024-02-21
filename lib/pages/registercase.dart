@@ -256,34 +256,43 @@ class _regcaseState extends State<regcase> {
                             child: Text(
                               'Submit',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
                               ),
                             ),
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
                           shape : RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0)
+                              borderRadius: BorderRadius.circular(16.0)
                           ),
                           backgroundColor: Colors.black,
                         ),
                         onPressed: () {
-                          final user = FirebaseAuth.instance.currentUser;
-                          FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").doc(user!.uid).set({
-                            "clientName" : user.displayName,
-                            "clientEmail" : user.email,
-                            "caseType" : _selectedOption,
-                            "location" : _locationCont.text.trim(),
-                            "date" : _dateCont.text.trim(),
-                            "briefing" : _descriptionCont.text.trim(),
-                          });
-                          _locationCont.clear();
-                          _dateCont.clear();
-                          _descriptionCont.clear();
-                          // _isChecked = false;
-                          // _selectedOption = null;
+                          if (_selectedOption!.isNotEmpty && _locationCont.text.trim().isNotEmpty && _dateCont.text.trim().isNotEmpty && _descriptionCont.text.trim().isNotEmpty) {
+                            final user = FirebaseAuth.instance.currentUser;
+                            FirebaseFirestore.instance.collection(
+                                "Registerted_Cases(non-assigned)")
+                                .doc(user!.uid)
+                                .collection("Cases")
+                                .add({
+                              "clientName": user.displayName,
+                              "clientEmail": user.email,
+                              "caseType": _selectedOption,
+                              "location": _locationCont.text.trim(),
+                              "date": _dateCont.text.trim(),
+                              "briefing": _descriptionCont.text.trim(),
+                            }).then((value) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Case registered."))))
+                                .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("!!Try again later!!"))));
+                            _locationCont.clear();
+                            _dateCont.clear();
+                            _descriptionCont.clear();
+                            // _isChecked = false;
+                            // _selectedOption = null;
+                          }else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please answer all the fields.")));
+                          }
                         },
                       ),
                     ),
