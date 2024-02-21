@@ -98,38 +98,6 @@ class cldashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                elevation: 20,
-                shadowColor: Colors.black,
-                borderOnForeground: true,
-                color: const Color.fromRGBO(29, 29, 29, 1),
-                margin: const EdgeInsets.all(20),
-                child: SizedBox(
-                  height: 145,
-                  width: 312,
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(0),
-                        child: SvgPicture.asset(
-                            "assets/images/Processing-bro 1.svg"),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 65, top: 5),
-                        child: Text(
-                          "Case\nStatus",
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               InkWell(
                 onTap: (){Navigator.pushNamed(context, "/chat");},
                 child: Card(
@@ -196,7 +164,38 @@ class cldashboard extends StatelessWidget {
                 ),
               ),
               Card(
-
+                elevation: 20,
+                shadowColor: Colors.black,
+                borderOnForeground: true,
+                color: const Color.fromRGBO(29, 29, 29, 1),
+                margin: const EdgeInsets.all(20),
+                child: SizedBox(
+                  height: 145,
+                  width: 312,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(0),
+                        child: SvgPicture.asset(
+                            "assets/images/Processing-bro 1.svg"),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 65, top: 5),
+                        child: Text(
+                          "Case\nStatus",
+                          style: TextStyle(
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
                 shadowColor: Colors.black,
                 elevation: 20,
                 color: Colors.white,
