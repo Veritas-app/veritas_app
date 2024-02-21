@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:veritas/pages/hero_dialog_route.dart';
+import 'package:veritas/hero_dialog_route.dart';
 
 class lawyerdashboard extends StatelessWidget {
   const lawyerdashboard({Key? key}) : super(key: key);
@@ -68,34 +68,37 @@ class lawyerdashboard extends StatelessWidget {
               ),
 
               // "NEW CASE CARD" START:
-              Card(
-                shadowColor: Colors.black,
-                elevation: 20,
-                color: Colors.white,
-                borderOnForeground: true,
-                margin: const EdgeInsets.all(20),
-                child: SizedBox(
-                  height: 145,
-                  width: 312,
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 25, top: 10),
-                        child: Text(
-                          "New \ncase #############",
-                          style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24,
+              InkWell(
+                onTap: (){},
+                child: Card(
+                  shadowColor: Colors.black,
+                  elevation: 20,
+                  color: Colors.white,
+                  borderOnForeground: true,
+                  margin: const EdgeInsets.all(20),
+                  child: SizedBox(
+                    height: 145,
+                    width: 312,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 25, top: 10),
+                          child: Text(
+                            "Find \ncase",
+                            style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 24,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 30),
-                        child: SvgPicture.asset(
-                            "assets/images/Judge-rafiki 1.svg"),
-                      ),
-                    ],
+                        Container(
+                          padding: EdgeInsets.only(left: 30),
+                          child: SvgPicture.asset(
+                              "assets/images/Judge-rafiki 1.svg"),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

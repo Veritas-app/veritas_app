@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:veritas/pages/functions.dart';
-import 'package:veritas/pages/loginpage.dart';
+import 'package:veritas/functions.dart';
+import 'package:veritas/pages/login_signup/loginpage.dart';
 
 class lawfeat extends StatefulWidget {
   // const clfeat({super.key});

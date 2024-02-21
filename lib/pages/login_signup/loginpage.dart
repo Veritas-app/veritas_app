@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
-import 'package:veritas/pages/functions.dart';
+import 'package:veritas/functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
 

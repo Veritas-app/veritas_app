@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:veritas/pages/hero_dialog_route.dart';
+import 'package:veritas/hero_dialog_route.dart';
 
 class cldashboard extends StatelessWidget {
   const cldashboard({Key? key}) : super(key: key);

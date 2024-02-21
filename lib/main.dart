@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:veritas/pages/signupdetails_client.dart';
-import 'package:veritas/pages/signupdetails_lawyer.dart';
+import 'package:veritas/pages/login_signup/signupdetails_client.dart';
+import 'package:veritas/pages/login_signup/signupdetails_lawyer.dart';
 import 'package:veritas/pages/splash.dart';
 import 'package:veritas/pages/imlawyer.dart';
 import 'package:veritas/pages/client/clientfeature.dart';
-import 'package:veritas/pages/loginpage.dart';
+import 'package:veritas/pages/login_signup/loginpage.dart';
 import 'package:veritas/pages/client/clientdashboard.dart';
 import 'package:veritas/pages/chatscreen.dart';
 
 import "package:firebase_core/firebase_core.dart";
 import 'package:veritas/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:veritas/pages/registercase.dart';
+import 'package:veritas/pages/client/registercase.dart';
 import "package:veritas/pages/lawyer/lawyerfeat.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
@@ -78,6 +78,8 @@ class MyApp extends StatelessWidget {
                 "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
                 "/chat": (context) => chatsection(receivertype: "chatbot",),
                 "/regcase":(context) => regcase(),
+
+                // "/findcase" : (context) => findcase(),
               },
             );
           }
