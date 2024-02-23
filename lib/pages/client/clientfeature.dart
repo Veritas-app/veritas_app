@@ -38,7 +38,7 @@ class _clfeatState extends State<clfeat> {
           children: [
             Func.veritastext(),
             SizedBox(
-              height: 600,
+              height: 570,
               width: double.infinity,
               child: PageView.builder(
                 controller: _pageController,
@@ -62,29 +62,32 @@ class _clfeatState extends State<clfeat> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        texts[index],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          color: Colors.black,
-                          fontSize: 26,
+                      Container(
+                        margin : EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          texts[index],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black,
+                            fontSize: 26,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (var i=0;i<images.length;i++)
-                            indicator(currentIndex==i)
-                        ],
                       ),
                     ],
                   );
                 },
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i=0;i<images.length;i++)
+                  indicator(currentIndex==i)
+              ],
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(
               padding: EdgeInsets.only(right:10),
