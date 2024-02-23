@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:veritas/functions.dart';
-import 'package:veritas/pages/login_signup/loginpage.dart';
 
 class lawfeat extends StatefulWidget {
   // const clfeat({super.key});
@@ -36,7 +35,7 @@ class _clfeatState extends State<lawfeat> {
           children: [
             Func.veritastext(),
             SizedBox(
-              height: 600,
+              height: 570,
               width: double.infinity,
               child: PageView.builder(
                 controller: _pageController,
@@ -69,20 +68,17 @@ class _clfeatState extends State<lawfeat> {
                           fontSize: 26,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (var i=0;i<images.length;i++)
-                            indicator(currentIndex==i)
-                        ],
-                      ),
                     ],
                   );
                 },
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i=0;i<images.length;i++)
+                  indicator(currentIndex==i)
+              ],
             ),
             Container(
               padding: EdgeInsets.only(right:10),
