@@ -15,7 +15,7 @@ import 'package:veritas/pages/client/registercase.dart';
 import "package:veritas/pages/lawyer/lawyerfeat.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:veritas/pages/lawyer/lawyerdashboard.dart';
-
+import 'package:veritas/pages/lawyer/findcase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,10 @@ class MyApp extends StatelessWidget {
       return '/first';
     } else {
       try {
-        final snapshot = await FirebaseFirestore.instance.collection("client").doc(user.uid).get();
+        final snapshot = await FirebaseFirestore.instance
+            .collection("client")
+            .doc(user.uid)
+            .get();
         if (snapshot.exists) {
           return '/cldashboard';
         } else {
@@ -76,10 +79,11 @@ class MyApp extends StatelessWidget {
                 "/lawyerdashboard": (context) => lawyerdashboard(),
                 "/signupdetails_client": (context) => signInDetails_client(),
                 "/signupdetails_lawyer": (context) => signInDetails_lawyer(),
-                "/chat": (context) => chatsection(receivertype: "chatbot",),
-                "/regcase":(context) => regcase(),
-
-                // "/findcase" : (context) => findcase(),
+                "/chat": (context) => chatsection(
+                      receivertype: "chatbot",
+                    ),
+                "/regcase": (context) => regcase(),
+                "/findcase": (context) => findcase(),
               },
             );
           }

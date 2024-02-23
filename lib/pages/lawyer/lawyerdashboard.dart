@@ -69,7 +69,7 @@ class lawyerdashboard extends StatelessWidget {
 
               // "NEW CASE CARD" START:
               InkWell(
-                onTap: (){},
+                onTap: (){Navigator.pushNamed(context, "/findcase");},
                 child: Card(
                   shadowColor: Colors.black,
                   elevation: 20,
