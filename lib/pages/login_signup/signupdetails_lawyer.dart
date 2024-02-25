@@ -17,7 +17,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
   TextEditingController _phonenoController = TextEditingController();
   TextEditingController _barnoController = TextEditingController();
   TextEditingController _otpController = TextEditingController();
-
+  String? _selectedOption;
 
   @override
   void dispose() {
@@ -63,7 +63,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
               child: TextField(
                 controller: _usernameController,
                 textInputAction: TextInputAction.next,
@@ -163,7 +163,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
                 controller: _barnoController,
                 textInputAction: TextInputAction.go,
@@ -184,6 +184,74 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                 ),
                 style: TextStyle(
 
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10), // Left and right padding
+              child: Container(
+                height: 65,
+                width: 353,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(27),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10), // Spacing
+                    Text(
+                      'Type of Advocate: ',
+                      style: TextStyle(
+                        fontFamily: "Inter",
+                        fontSize: 16,
+                        color: Color.fromRGBO(151, 151, 151, 0.8),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            icon: Icon(Icons.keyboard_arrow_down, color: Color.fromRGBO(151, 151, 151, 0.8)), // Custom dropdown icon
+                            style: TextStyle(
+                              fontFamily: "Inter",
+                              color: Color.fromRGBO(151, 151, 151, 0.8),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            value: _selectedOption,
+                            dropdownColor: Colors.white, // Dropdown box color
+                            items: <String>[
+                              'Civil',
+                              'Labor',
+                              'Family',
+                              'Cooperative',
+                              'Consumer forum',
+                              'Other',
+                            ].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    value,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                _selectedOption = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -221,7 +289,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                   );
                 }
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 10,),
             ElevatedButton(
               child: SizedBox(
                 width: 300,
@@ -254,6 +322,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                     "email": _emailController.text.trim(),
                     "phoneno": _phonenoController.text.trim(),
                     "bar-id" : _barnoController.text.trim(),
+                    "caseType": _selectedOption,
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: const Text("logged in"))
