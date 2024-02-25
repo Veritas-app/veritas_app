@@ -7,6 +7,38 @@ class findcase extends StatefulWidget {
 }
 
 class _findcaseState extends State<findcase> {
+  List<Widget> cases = [];
+
+  @override
+  void initState(){
+    super.initState();
+    setcases();
+  }
+
+  Future setcases() async{
+    List<Widget> caseWidgets = await getcases();
+    setState(() {
+      cases = caseWidgets;
+    });
+  }
+
+  Future<List<Widget>> getcases() async{
+    List<Widget> cases = [];
+    var query = await FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").get();
+    for (var doc in query.docs){
+      QuerySnapshot feed = await FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").doc(doc.id).collection("Cases").get();
+      for (var casesdoc in feed.docs){
+        // print(casesdoc["caseType"]);
+        ListTile tile = ListTile(
+          title: Text(casesdoc["caseType"]),
+        );
+        cases.add(tile);
+      }
+    }
+    return cases;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,33 +48,12 @@ class _findcaseState extends State<findcase> {
         title: const Text("Find a Case"),
       ),
       body: SafeArea(
-          child: Column(
-        children: [
-          TextButton(
-              onPressed: () {
-                FirebaseFirestore.instance
-                    .collection('Registerted_Cases(non-assigned)')
-                    .get()
-                    .then((QuerySnapshot querySnapshot) {
-                  querySnapshot.docs.forEach((doc) {
-                    // print(doc["Cases"]["caseType"]);
-                    Text("gfhffhfgghfgfhjfyvbjv");
-                  });
-                });
-              },
-              child: Text("hgfhjfg")),
-          StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance
-                .collection("Registerted_Cases(non-assigned)")
-                .snapshots(),
-            builder: (context, snapshots) {
-              return (snapshots.connectionState == ConnectionState.waiting)
-                  ? Center(child: CircularProgressIndicator())
-                  : Text("caseType");
-            },
-          ),
-        ],
-      )),
+          child: ListView.builder(
+            itemCount: cases.length,
+              itemBuilder: (context,index){
+              return cases[index];
+              }),
+      ),
     );
   }
 }
