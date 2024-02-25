@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class findcase extends StatefulWidget {
@@ -15,7 +16,7 @@ class _findcaseState extends State<findcase> {
     setcases();
   }
 
-  Future setcases() async{
+  Future setcases() async {
     List<Widget> caseWidgets = await getcases();
     setState(() {
       cases = caseWidgets;
@@ -26,11 +27,23 @@ class _findcaseState extends State<findcase> {
     List<Widget> cases = [];
     var query = await FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").get();
     for (var doc in query.docs){
-      QuerySnapshot feed = await FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").doc(doc.id).collection("Cases").get();
+      QuerySnapshot feed = await FirebaseFirestore.instance.collection("Registerted_Cases(non-assigned)").doc(doc.id).collection("Cases").limit(3).get();
       for (var casesdoc in feed.docs){
-        // print(casesdoc["caseType"]);
-        ListTile tile = ListTile(
-          title: Text(casesdoc["caseType"]),
+        String casetype = casesdoc["caseType"];
+        Widget tile = Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                color: Colors.blueAccent[100],
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(new Radius.circular(10))
+            ),
+              child: ListTile(
+                title: Text(casesdoc["caseType"]),
+                subtitle: Text(casesdoc["briefing"]),
+              ),
+          ),
         );
         cases.add(tile);
       }
@@ -48,11 +61,11 @@ class _findcaseState extends State<findcase> {
         title: const Text("Find a Case"),
       ),
       body: SafeArea(
-          child: ListView.builder(
+        child: ListView.builder(
             itemCount: cases.length,
-              itemBuilder: (context,index){
+            itemBuilder: (context,index){
               return cases[index];
-              }),
+            }),
       ),
     );
   }
