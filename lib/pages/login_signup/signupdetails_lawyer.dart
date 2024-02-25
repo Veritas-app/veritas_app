@@ -322,7 +322,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                     "email": _emailController.text.trim(),
                     "phoneno": _phonenoController.text.trim(),
                     "bar-id" : _barnoController.text.trim(),
-                    "caseType": _selectedOption,
+                    "lawyerType": _selectedOption,
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: const Text("logged in"))
