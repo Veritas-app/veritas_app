@@ -41,7 +41,7 @@ Explore our codebase and documentation to understand the intricacies of Veritas.
 We welcome contributions from the community. Whether it's bug fixes, feature enhancements, or documentation improvements, your input is valuable. 
 ## Acknowledgments
 
-We extend our gratitude to all contributors and supporters who have played a role in making Veritas a reality.
+We extend our gratitude to all contributors and supporters who have played a role in making Veritas, a reality.
 
 
 **Thank you for being a part of Veritas!**
