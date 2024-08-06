@@ -66,8 +66,8 @@ class firstpg extends StatelessWidget {
                     Navigator.pushNamed(context, "/lawyerfeat");
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll<Color>(Colors.white),
-                    padding: MaterialStateProperty.all(
+                    backgroundColor: WidgetStatePropertyAll<Color>(Colors.white),
+                    padding: WidgetStateProperty.all(
                         EdgeInsets.symmetric(vertical:10.0,horizontal: 60.0)),
                   ),
                   child: Text(
@@ -88,8 +88,8 @@ class firstpg extends StatelessWidget {
                     Navigator.pushNamed(context, "/clientfeature");
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll<Color>(Colors.black87),
-                    padding: MaterialStateProperty.all(
+                    backgroundColor: WidgetStatePropertyAll<Color>(Colors.black87),
+                    padding: WidgetStateProperty.all(
                         EdgeInsets.symmetric(vertical:10.0,horizontal: 46.5)),
                   ),
                   child: Text(

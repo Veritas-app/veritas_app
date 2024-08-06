@@ -272,7 +272,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(44, 44, 44, 1,)),
+                  backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(44, 44, 44, 1,)),
                 ),
                 onPressed: () async{
                   // otpDialog();
@@ -307,7 +307,7 @@ class _signInDetailsState extends State<signInDetails_lawyer> {
                 ),
               ),
               style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(44, 44, 44, 1,)),
+                backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(44, 44, 44, 1,)),
               ),
               onPressed: () async{
                 try{

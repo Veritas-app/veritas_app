@@ -141,8 +141,8 @@ class _loginState extends State<login> {
                     }
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll<Color>(Colors.black87),
-                    padding: MaterialStateProperty.all(
+                    backgroundColor: WidgetStatePropertyAll<Color>(Colors.black87),
+                    padding: WidgetStateProperty.all(
                         EdgeInsets.symmetric(vertical:12.0,horizontal: 137)),
                   ),
                   child: Text(
