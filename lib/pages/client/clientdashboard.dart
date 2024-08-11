@@ -222,7 +222,7 @@ class cldashboard extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(left: 30),
                       child:
-                          SvgPicture.asset("assets/images/Judge-rafiki 1.svg"),
+                      SvgPicture.asset("assets/images/Judge-rafiki 1.svg"),
                     ),
                   ],
                 ),
@@ -232,8 +232,8 @@ class cldashboard extends StatelessWidget {
         ),
       ),
       bottomNavigationBar:
-          // padding: const EdgeInsets.only(top: 20),
-          Container(
+      // padding: const EdgeInsets.only(top: 20),
+      Container(
         color: const Color.fromRGBO(
             29, 29, 29, 1), // Set the color to match the "CASE STATUS" card
         child: BottomNavigationBar(
